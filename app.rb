@@ -10,14 +10,17 @@ class Application < Sinatra::Base
 
   # Root path (homepage, index page)
   get '/' do
-    return 'Hello world!'
+    return 'Hello'
   end
 
   get '/hello' do
-    name = params[:name]
-
-    "Hello, #{name}"
+    
+  return erb(:index)
   
+  end
+
+  get '/names' do
+    return 'Julia, Mary, Karim'
   end
 
   post '/submit' do
@@ -28,4 +31,28 @@ class Application < Sinatra::Base
     return "Thanks #{name}, you sent this message: #{message}"
   end
 
+  post '/sort_names' do
+    names = params[:names]
+    return names.split(',').sort.join(',')
+  end
+
 end
+
+
+
+
+
+# diagram in diagram.codes
+
+# alias client ="HTTP client"
+# alias rackup="Rackup "
+# alias app="Application class"
+# alias GET="Get/ (route block)"
+
+
+# client->rackup:"HTTP Request"
+# rackup->app:"forwards request"
+# app->GET:"Calls"
+# GET->app:"Returns"
+# app->rackup:"Sends response"
+# rackup->client:"HTTP response"
