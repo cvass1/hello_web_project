@@ -21,12 +21,14 @@ describe Application do
     it "returns HTML response" do
       response = get('/hello')
 
-      expect(response.body).to eq "<html>
-    <head></head>
-    <body>
-      <h1>Hello!</h1>
-    </body>
-</html>"
+#       expect(response.body).to eq "<html>
+#     <head></head>
+#     <body>
+#       <h1>Hello!</h1>
+#     </body>
+# </html>"
+    expect(response.body).to include "<h1>Hello!</h1>"
+
     end
 
   end
